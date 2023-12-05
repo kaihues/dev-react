@@ -1,6 +1,9 @@
 import './Cat.css';
 import { useState } from 'react';
 
+const CLIENT_ID = "252a84a890044ce4ab4ba5aef17913e1";
+const CLIENT_SECRET = "cddf795f75884c5ea515b37de823639a";
+
 export default function Cat({ imgSrc1 , imgSrc2, catAudio , text }) {
 
     const [ catImage , UpdateCatImage ] = useState(imgSrc1);
