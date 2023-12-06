@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import Cat from "./Cat.jsx";
+import { CLIENT_ID, CLIENT_SECRET } from "./Keys.jsx";
 
 import CatOneF1 from "./assets/basic-cat-1.png";
 import CatOneF2 from "./assets/basic-cat-2.png";
-
-const CLIENT_ID = "252a84a890044ce4ab4ba5aef17913e1";
-const CLIENT_SECRET = "cddf795f75884c5ea515b37de823639a";
 
 export default function App() {
   const [accessToken, setAccessToken] = useState("");
