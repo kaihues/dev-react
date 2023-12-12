@@ -3,8 +3,17 @@ import './App.css';
 import Cat from "./Cat.jsx";
 import { CLIENT_ID, CLIENT_SECRET } from "./Keys.jsx";
 
-import CatOneF1 from "./assets/basic-cat-1.png";
-import CatOneF2 from "./assets/basic-cat-2.png";
+import CatOneF1 from "./assets/calico-1.png";
+import CatOneF2 from "./assets/calico-2.png";
+
+import CatTwoF1 from "./assets/tux-1.png";
+import CatTwoF2 from "./assets/tux-2.png";
+
+import CatThreeF1 from "./assets/stripes-1.png";
+import CatThreeF2 from "./assets/stripes-2.png";
+
+import CatFourF1 from "./assets/sia-1.png";
+import CatFourF2 from "./assets/sia-2.png";
 
 export default function App() {
   const [accessToken, setAccessToken] = useState("");
