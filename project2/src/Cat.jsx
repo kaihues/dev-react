@@ -7,18 +7,24 @@ const SAMPLE_PLAYLIST_ID = '37i9dQZF1DX9wa6XirBPv8';
 export default function Cat({ imgSrc1 , imgSrc2 , access}) {
 
     const [ catImage , UpdateCatImage ] = useState(imgSrc1);
+    const [ audioPrev, UpdateAudioPrev ] = useState(null);
+    // const [loading, setLoading] = useState(true);
+    // const [error, setError] = useState(null);
+    
+    let audio = new Audio(audioPrev);
+    audio.addEventListener("ended", CloseMouth);
 
     function Sing(){
         UpdateCatImage(imgSrc2);
+        getPlaylist();
         audio.play();
-        getSong();
     }
 
     function CloseMouth() {
         UpdateCatImage(imgSrc1);
     }
 
-    function getSong() {
+    function getPlaylist() {
         var playlistParameters = {
           method: 'GET',
           headers: {
@@ -26,20 +32,24 @@ export default function Cat({ imgSrc1 , imgSrc2 , access}) {
             'Authorization': 'Bearer ' + access
           }
         }
+        
         // choose which playlist to use
-        var playlistID = fetch('https://api.spotify.com/v1/playlists/' + SAMPLE_PLAYLIST_ID, playlistParameters)
+        var playlist = fetch('https://api.spotify.com/v1/playlists/' + SAMPLE_PLAYLIST_ID, playlistParameters)
           .then(response => response.json())
-          .then(data => console.log(data.tracks.items))    
+          .then(data => {
+            let trackNum = Math.floor(Math.random() * data.tracks.items.length);
+            let preview = data.tracks.items[trackNum].track.preview_url;
+            console.log(preview);
+            UpdateAudioPrev(preview);
+
+          })
+          .catch((err) => {
+            console.log(err.message);
+          });  
     }
 
-    let audioPrev = "o";
-
-
-    let audio = new Audio(audioPrev);
-    audio.addEventListener("ended", CloseMouth);
-
     return (
-    <div><button onClick={ Sing } className="Cat"><img src={catImage}></img></button></div>
+    <div><button onClick={ Sing } className="Cat"><img src={catImage}></img></button><embed src={audioPrev} type="audio/mpeg"/></div>
     );
 
 
