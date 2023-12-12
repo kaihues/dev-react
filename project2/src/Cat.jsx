@@ -39,6 +39,9 @@ export default function Cat({ imgSrc1 , imgSrc2 , access}) {
           .then(data => {
             let trackNum = Math.floor(Math.random() * data.tracks.items.length);
             let preview = data.tracks.items[trackNum].track.preview_url;
+            while (preview == null) {
+              preview = data.tracks.items[trackNum].track.preview_url;
+            }
             console.log(preview);
             UpdateAudioPrev(preview);
 
