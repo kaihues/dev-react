@@ -15,7 +15,11 @@ import CatThreeF2 from "./assets/stripes-2.png";
 import CatFourF1 from "./assets/sia-1.png";
 import CatFourF2 from "./assets/sia-2.png";
 
+import Title from "./assets/title.png";
+
 const playlist1 = '37i9dQZF1DX9wa6XirBPv8';
+
+const siteTitle = "Beats n' Cats";
 
 export default function App() {
   const [accessToken, setAccessToken] = useState("");
@@ -37,12 +41,14 @@ export default function App() {
   }, [])
 
   return (
-  <div class = "fullApp">
-  <h1>beats and cats !</h1>
-  <Cat imgSrc1={ CatOneF1 } imgSrc2 = { CatOneF2 } access = { accessToken } playlistId = { playlist1 } />
-  <Cat imgSrc1={ CatTwoF1 } imgSrc2 = { CatTwoF2 } access = { accessToken } playlistId = { playlist1 } />
-  <Cat imgSrc1={ CatThreeF1 } imgSrc2 = { CatThreeF2 } access = { accessToken } playlistId = { playlist1 } />
-  <Cat imgSrc1={ CatFourF1 } imgSrc2 = { CatFourF2 } access = { accessToken } playlistId = { playlist1 } />
+  <div class = "FullApp">
+    <img class = "Title" src= { Title } />
+    <ul class = "CatList">
+      <li><Cat imgSrc1={ CatOneF1 } imgSrc2 = { CatOneF2 } access = { accessToken } playlistId = { playlist1 } /></li>
+      <li><Cat imgSrc1={ CatTwoF1 } imgSrc2 = { CatTwoF2 } access = { accessToken } playlistId = { playlist1 } /></li>
+      <li><Cat imgSrc1={ CatThreeF1 } imgSrc2 = { CatThreeF2 } access = { accessToken } playlistId = { playlist1 } /></li>
+      <li><Cat imgSrc1={ CatFourF1 } imgSrc2 = { CatFourF2 } access = { accessToken } playlistId = { playlist1 } /></li>
+    </ul>
   </div>
   );
   }

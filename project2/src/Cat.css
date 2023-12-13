@@ -6,6 +6,14 @@
     padding: 0;
 }
 
-.catPic {
+.CatPic {
     width: 20vw;
 }
+
+.Grow { 
+    transition: all .2s ease-in-out; 
+  }
+    
+  .Grow:hover { 
+    transform: scale(1.05); 
+  }

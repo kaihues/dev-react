@@ -53,7 +53,7 @@ export default function Cat({ imgSrc1 , imgSrc2 , access, playlistId}) {
     }
 
     return (
-    <div><button onClick={ getPlaylist } className="Cat"><img class = "catPic" src={catImage}></img></button></div>
+    <div><button onClick={ getPlaylist } className="Cat Grow"><img class = "CatPic" src={catImage}></img></button></div>
     );
 
 
