@@ -1,9 +1,29 @@
 
-.fullApp {
+.FullApp {
     display: grid;
+    background-color: rgb(194, 209, 126);
+    background-image: url("./assets/background.png");
+    height: 97.5vh;
 }
 
+.Title {
+    margin: auto;
+    width: 35vw;
+}
 
 h1 {
     margin: auto;
+    font-family: Verdana, sans-serif;
+    color: rgb(65, 161, 87);
+    font-size: 4vw;
 }
+
+.CatList {
+    list-style-type: none;
+}
+
+.CatList li {
+    display: inline-block;
+    padding: 0 1.5vw;
+}
+

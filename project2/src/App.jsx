@@ -15,10 +15,16 @@ import CatThreeF2 from "./assets/stripes-2.png";
 import CatFourF1 from "./assets/sia-1.png";
 import CatFourF2 from "./assets/sia-2.png";
 
-const playlistID_1 = '37i9dQZF1DXasneILDRM7B';
-const playlistID_2 = '37i9dQZF1EId3k9ylpDgha';
-const playlistID_3 = '37i9dQZF1EIgBrmye0h40Y';
-const playlistID_4 = '37i9dQZF1DWZCkamcYMQkz';
+import Title from "./assets/title.png";
+
+const playlistID_1 = '37i9dQZF1DXasneILDRM7B'; // "Pure Pop Punk"
+const playlistID_2 = '37i9dQZF1EId3k9ylpDgha'; // "Midwest Emo Mix"
+const playlistID_3 = '37i9dQZF1EIgBrmye0h40Y'; // "Cozy Indie Mix"
+const playlistID_4 = '37i9dQZF1DWZCkamcYMQkz'; // "Feel Good Jazz"
+
+// const playlist1 = '37i9dQZF1DX9wa6XirBPv8';
+
+const siteTitle = "Beats n' Cats";
 
 export default function App() {
   const [accessToken, setAccessToken] = useState("");
@@ -90,12 +96,14 @@ export default function App() {
   }, []);
 
   return (
-  <div class = "fullApp">
-  <h1>beats and cats !</h1>
-  <Cat imgSrc1={ CatOneF1 } imgSrc2 = { CatOneF2 } playlist = { playlist1 } />
-  <Cat imgSrc1={ CatTwoF1 } imgSrc2 = { CatTwoF2 } playlist = { playlist2 } />
-  <Cat imgSrc1={ CatThreeF1 } imgSrc2 = { CatThreeF2 } playlist = { playlist3 } />
-  <Cat imgSrc1={ CatFourF1 } imgSrc2 = { CatFourF2 } playlist = { playlist4 } />
+  <div class = "FullApp">
+    <img class = "Title" src= { Title } />
+    <ul class = "CatList">
+      <li><Cat imgSrc1={ CatOneF1 } imgSrc2 = { CatOneF2 } access = { accessToken } playlist = { playlist1 } /></li>
+      <li><Cat imgSrc1={ CatTwoF1 } imgSrc2 = { CatTwoF2 } access = { accessToken } playlist = { playlist2 } /></li>
+      <li><Cat imgSrc1={ CatThreeF1 } imgSrc2 = { CatThreeF2 } access = { accessToken } playlist = { playlist3 } /></li>
+      <li><Cat imgSrc1={ CatFourF1 } imgSrc2 = { CatFourF2 } access = { accessToken } playlist = { playlist4 } /></li>
+    </ul>
   </div>
   );
   }

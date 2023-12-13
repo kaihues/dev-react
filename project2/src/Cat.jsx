@@ -1,7 +1,7 @@
 import './Cat.css';
 import { useState } from 'react';
 
-export default function Cat({ imgSrc1 , imgSrc2 , playlist}) {
+export default function Cat({ imgSrc1 , imgSrc2 , access , playlist }) {
   let trackNum = Math.floor(Math.random() * 50); //playlist.length
   let audio = new Audio(null);
   if (playlist != null) {
@@ -44,7 +44,7 @@ export default function Cat({ imgSrc1 , imgSrc2 , playlist}) {
     }
 
     return (
-    <div><button onClick={ Sing } className="Cat"><img class = "catPic" src={catImage}></img></button></div>
+    <div><button onClick={ Sing } className="Cat Grow"><img class = "CatPic" src={catImage}></img></button></div>
     );
 
 
