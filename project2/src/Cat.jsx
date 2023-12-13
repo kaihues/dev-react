@@ -1,10 +1,7 @@
 import './Cat.css';
 import { useState } from 'react';
 
-const SAMPLE_PLAYLIST_ID = '37i9dQZF1DX9wa6XirBPv8';
-
-
-export default function Cat({ imgSrc1 , imgSrc2 , access}) {
+export default function Cat({ imgSrc1 , imgSrc2 , access, playlistId}) {
 
     const [ catImage , UpdateCatImage ] = useState(imgSrc1);
     const [ audio, UpdateAudio ] = useState(null);
@@ -35,7 +32,7 @@ export default function Cat({ imgSrc1 , imgSrc2 , access}) {
         }
         
         // choose which playlist to use
-        var playlist = fetch('https://api.spotify.com/v1/playlists/' + SAMPLE_PLAYLIST_ID, playlistParameters)
+        var playlist = fetch('https://api.spotify.com/v1/playlists/' + playlistId, playlistParameters)
           .then(response => response.json())
           .then(data => {
             console.log(data);
