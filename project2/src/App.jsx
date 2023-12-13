@@ -35,7 +35,7 @@ export default function App() {
   }, [])
 
   return (
-  <div>
+  <div class = "fullApp">
   <h1>beats and cats !</h1>
   <Cat imgSrc1={ CatOneF1 } imgSrc2 = { CatOneF2 } access = {accessToken} />
   </div>

@@ -7,16 +7,18 @@ const SAMPLE_PLAYLIST_ID = '37i9dQZF1DX9wa6XirBPv8';
 export default function Cat({ imgSrc1 , imgSrc2 , access}) {
 
     const [ catImage , UpdateCatImage ] = useState(imgSrc1);
-    const [ audioPrev, UpdateAudioPrev ] = useState(null);
+    const [ audio, UpdateAudio ] = useState(null);
     // const [loading, setLoading] = useState(true);
     // const [error, setError] = useState(null);
     
-    let audio = new Audio(audioPrev);
-    audio.addEventListener("ended", CloseMouth);
+    if (audio) {
+        audio.addEventListener("ended", CloseMouth);
+    }
+    
+  
 
     function Sing(){
         UpdateCatImage(imgSrc2);
-        getPlaylist();
         audio.play();
     }
 
@@ -25,7 +27,8 @@ export default function Cat({ imgSrc1 , imgSrc2 , access}) {
     }
 
     function getPlaylist() {
-        var playlistParameters = {
+      console.log("got playlist");
+      var playlistParameters = {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -43,7 +46,9 @@ export default function Cat({ imgSrc1 , imgSrc2 , access}) {
               preview = data.tracks.items[trackNum].track.preview_url;
             }
             console.log(preview);
-            UpdateAudioPrev(preview);
+            const audio = new Audio(preview)
+            audio.addEventListener("canplay", Sing)
+            UpdateAudio(audio);
 
           })
           .catch((err) => {
@@ -52,7 +57,7 @@ export default function Cat({ imgSrc1 , imgSrc2 , access}) {
     }
 
     return (
-    <div><button onClick={ Sing } className="Cat"><img src={catImage}></img></button><embed src={audioPrev} type="audio/mpeg"/></div>
+    <div><button onClick={ getPlaylist } className="Cat"><img class = "catPic" src={catImage}></img></button></div>
     );
 
 
