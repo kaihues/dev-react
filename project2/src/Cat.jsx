@@ -15,8 +15,6 @@ export default function Cat({ imgSrc1 , imgSrc2 , access}) {
         audio.addEventListener("ended", CloseMouth);
     }
     
-  
-
     function Sing(){
         UpdateCatImage(imgSrc2);
         audio.play();
