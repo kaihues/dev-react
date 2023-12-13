@@ -1,10 +1,25 @@
 import './Cat.css';
 import { useState } from 'react';
 
-export default function Cat({ imgSrc1 , imgSrc2 , access, playlistId}) {
+export default function Cat({ imgSrc1 , imgSrc2 , playlist}) {
+  let trackNum = Math.floor(Math.random() * 50); //playlist.length
+  let audio = new Audio(null);
+  if (playlist != null) {
+    console.log("playlist not null")
+    audio = playlist[trackNum].track.preview_url;
+    while (audio == null) {
+      trackNum = Math.floor(Math.random() * playlist.length);
+      audio = playlist[trackNum].track.preview_url;
+    }
+  }
+  else {
+    audio = null;
+  }
+
+    
 
     const [ catImage , UpdateCatImage ] = useState(imgSrc1);
-    const [ audio, UpdateAudio ] = useState(null);
+    // const [ track, updateTrack ] = useState(trackNum);
     // const [loading, setLoading] = useState(true);
     // const [error, setError] = useState(null);
     
@@ -15,45 +30,21 @@ export default function Cat({ imgSrc1 , imgSrc2 , access, playlistId}) {
     function Sing(){
         UpdateCatImage(imgSrc2);
         audio.play();
+        if(audio != null) {
+          audio.play();
+        }
+        else{
+          console.log("audio null")
+        }
+        
     }
 
     function CloseMouth() {
         UpdateCatImage(imgSrc1);
     }
 
-    function getPlaylist() {
-      console.log("got playlist");
-      var playlistParameters = {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + access
-          }
-        }
-        
-        // choose which playlist to use
-        var playlist = fetch('https://api.spotify.com/v1/playlists/' + playlistId, playlistParameters)
-          .then(response => response.json())
-          .then(data => {
-            console.log(data);
-            let trackNum = Math.floor(Math.random() * data.tracks.items.length);
-            let preview = data.tracks.items[trackNum].track.preview_url;
-            while (preview == null) {
-              preview = data.tracks.items[trackNum].track.preview_url;
-            }
-            console.log(preview);
-            const audio = new Audio(preview)
-            audio.addEventListener("canplay", Sing)
-            UpdateAudio(audio);
-
-          })
-          .catch((err) => {
-            console.log(err.message);
-          });  
-    }
-
     return (
-    <div><button onClick={ getPlaylist } className="Cat"><img class = "catPic" src={catImage}></img></button></div>
+    <div><button onClick={ Sing } className="Cat"><img class = "catPic" src={catImage}></img></button></div>
     );
 
 
