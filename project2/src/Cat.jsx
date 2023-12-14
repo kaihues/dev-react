@@ -1,27 +1,44 @@
 import './Cat.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-export default function Cat({ imgSrc1 , imgSrc2 , access , playlist }) {
-  let trackNum = Math.floor(Math.random() * 50); //playlist.length
-  let audio = new Audio(null);
-  if (playlist != null) {
-    console.log("playlist not null")
-    audio = playlist[trackNum].track.preview_url;
-    while (audio == null) {
-      trackNum = Math.floor(Math.random() * playlist.length);
-      audio = playlist[trackNum].track.preview_url;
-    }
-  }
-  else {
-    audio = null;
-  }
+export default function Cat({ imgSrc1 , imgSrc2 , access , playlistID }) {
 
-    
+  const [ catImage , UpdateCatImage ] = useState(imgSrc1);
+  const [ catSong, UpdateCatSong ] = useState(null);
 
-    const [ catImage , UpdateCatImage ] = useState(imgSrc1);
-    // const [ track, updateTrack ] = useState(trackNum);
+  const [playlist, setPlaylist] = useState(null);
+  const [ trackNum, updateTrackNum ] = useState(0);
     // const [loading, setLoading] = useState(true);
     // const [error, setError] = useState(null);
+
+  useEffect(() => {
+    var playlistParameters = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + access
+      }
+    }
+    // load each playlist as state object
+    fetch('https://api.spotify.com/v1/playlists/' + playlistID, playlistParameters)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        setPlaylist(data.tracks.items);
+        let n = 0;
+        while (catSong == null) {
+          n = Math.floor(Math.random() * data.tracks.total);
+          let song = data.tracks.items[n].track.preview_url;
+          UpdateCatSong(song);
+        }
+        updateTrackNum(n);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }, []);
+
+  let audio = new Audio(catSong);
     
     if (audio) {
         audio.addEventListener("ended", CloseMouth);

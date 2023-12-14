@@ -27,11 +27,7 @@ const playlistID_4 = '37i9dQZF1DWZCkamcYMQkz'; // "Feel Good Jazz"
 const siteTitle = "Beats n' Cats";
 
 export default function App() {
-  const [accessToken, setAccessToken] = useState("");
-  const [playlist1, setPlaylist1] = useState(null);
-  const [playlist2, setPlaylist2] = useState(null);
-  const [playlist3, setPlaylist3] = useState(null);
-  const [playlist4, setPlaylist4] = useState(null); 
+  const [accessToken, setAccessToken] = useState(""); 
 
   useEffect(() =>{
     var authParameters = {
@@ -45,64 +41,17 @@ export default function App() {
     .then(result => result.json())
     .then(data => setAccessToken(data.access_token))
     .then(console.log("successful request"))
-    .catch((error) => {
-      console.log(error)
-    })
-
-    var playlistParameters = {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + accessToken
-      }
-    }
-    // load each playlist as state object
-    fetch('https://api.spotify.com/v1/playlists/' + playlistID_1, playlistParameters)
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        setPlaylist1(data.tracks.items);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-    fetch('https://api.spotify.com/v1/playlists/' + playlistID_2, playlistParameters) 
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        setPlaylist2(data.tracks.items);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-    fetch('https://api.spotify.com/v1/playlists/' + playlistID_3, playlistParameters) 
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        setPlaylist3(data.tracks.items);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-    fetch('https://api.spotify.com/v1/playlists/' + playlistID_4, playlistParameters) 
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        setPlaylist4(data.tracks.items);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+    .catch((error) => console.log(error))
   }, []);
 
   return (
   <div class = "FullApp">
     <img class = "Title" src= { Title } />
     <ul class = "CatList">
-      <li><Cat imgSrc1={ CatOneF1 } imgSrc2 = { CatOneF2 } access = { accessToken } playlist = { playlist1 } /></li>
-      <li><Cat imgSrc1={ CatTwoF1 } imgSrc2 = { CatTwoF2 } access = { accessToken } playlist = { playlist2 } /></li>
-      <li><Cat imgSrc1={ CatThreeF1 } imgSrc2 = { CatThreeF2 } access = { accessToken } playlist = { playlist3 } /></li>
-      <li><Cat imgSrc1={ CatFourF1 } imgSrc2 = { CatFourF2 } access = { accessToken } playlist = { playlist4 } /></li>
+      <li><Cat imgSrc1={ CatOneF1 } imgSrc2 = { CatOneF2 } access = { accessToken } playlistID = { playlistID_1 } /></li>
+      <li><Cat imgSrc1={ CatTwoF1 } imgSrc2 = { CatTwoF2 } access = { accessToken } playlistID = { playlistID_2 } /></li>
+      <li><Cat imgSrc1={ CatThreeF1 } imgSrc2 = { CatThreeF2 } access = { accessToken } playlistID = { playlistID_3 } /></li>
+      <li><Cat imgSrc1={ CatFourF1 } imgSrc2 = { CatFourF2 } access = { accessToken } playlistID = { playlistID_4 } /></li>
     </ul>
   </div>
   );
