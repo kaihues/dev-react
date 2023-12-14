@@ -28,7 +28,7 @@ export default function Cat({ imgSrc1 , imgSrc2 , audioSrc }) {
     }
 
     return (
-    <div><button onClick={ Sing } className="Cat Grow"><img class = "CatPic" src={catImage}></img></button></div>
+    <div><button onClick={ Sing } className="Cat Grow"><img className = "CatPic" src={catImage}></img></button></div>
     );
 
 
