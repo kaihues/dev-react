@@ -22,6 +22,11 @@ import audio2 from "./assets/using-sorority-noise.mp3";
 import audio3 from "./assets/cavetown-talk-to-me.mp3";
 import audio4 from "./assets/vivaldi-winter.mp3";
 
+const text1 = "Gorillaz - 19-2000";
+const text2 = "Sorority Noise - Using";
+const text3 = "Cavetown - Talk to Me";
+const text4 = "Vivaldi - Winter";
+
 const playlistID_1 = '37i9dQZF1DXasneILDRM7B'; // "Pure Pop Punk"
 const playlistID_2 = '37i9dQZF1EId3k9ylpDgha'; // "Midwest Emo Mix"
 const playlistID_3 = '37i9dQZF1EIgBrmye0h40Y'; // "Cozy Indie Mix"
@@ -215,10 +220,10 @@ export default function App() {
     <div className = "FullApp">
       <img className = "Title" src= { Title } />
       <ul className = "CatList">
-        <li><Cat imgSrc1={ CatOneF1 } imgSrc2 = { CatOneF2 } audioSrc = { audio1 } /></li>
-        <li><Cat imgSrc1={ CatTwoF1 } imgSrc2 = { CatTwoF2 } audioSrc = { audio2 } /></li>
-        <li><Cat imgSrc1={ CatThreeF1 } imgSrc2 = { CatThreeF2 } audioSrc = { audio3 } /></li>
-        <li><Cat imgSrc1={ CatFourF1 } imgSrc2 = { CatFourF2 } audioSrc = { audio4 } /></li>
+        <li><Cat imgSrc1={ CatOneF1 } imgSrc2 = { CatOneF2 } audioSrc = { audio1 } catText = { text1 } /></li>
+        <li><Cat imgSrc1={ CatTwoF1 } imgSrc2 = { CatTwoF2 } audioSrc = { audio2 } catText = { text2 } /></li>
+        <li><Cat imgSrc1={ CatThreeF1 } imgSrc2 = { CatThreeF2 } audioSrc = { audio3 } catText = { text3 } /></li>
+        <li><Cat imgSrc1={ CatFourF1 } imgSrc2 = { CatFourF2 } audioSrc = { audio4 } catText = { text4 } /></li>
       </ul>
     </div>
     );
