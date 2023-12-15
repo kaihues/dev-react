@@ -36,7 +36,7 @@ const siteTitle = "Beats n' Cats";
 
 export default function App() {
   
-  /*
+  
   
   const [accessToken, setToken] = useState(''); 
 
@@ -214,7 +214,7 @@ export default function App() {
     return n;
   }
 
-  */
+  
 
   return (
     <div className = "FullApp">
