@@ -3,8 +3,8 @@ import './App.css';
 import Cat from "./Cat.jsx";
 // import { CLIENT_ID, CLIENT_SECRET } from "./Keys.jsx";
 
-const CLIENT_ID = process.env.CLIENT_ID;
-const CLIENT_SECRET = process.env.CLIENT_SECRET;
+const CLIENT_ID = import.meta.CLIENT_ID;
+const CLIENT_SECRET = import.meta.env.CLIENT_SECRET;
 
 import CatOneF1 from "./assets/calico-1.png";
 import CatOneF2 from "./assets/calico-2.png";
