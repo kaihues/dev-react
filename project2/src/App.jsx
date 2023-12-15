@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import Cat from "./Cat.jsx";
-import { CLIENT_ID, CLIENT_SECRET } from "./Keys.jsx"; 
+// import { CLIENT_ID, CLIENT_SECRET } from "./Keys.jsx"; 
 
 import CatOneF1 from "./assets/calico-1.png";
 import CatOneF2 from "./assets/calico-2.png";
