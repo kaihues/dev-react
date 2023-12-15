@@ -1,11 +1,11 @@
 import './Cat.css';
 import { useState } from 'react';
 
-export default function Cat({ imgSrc1 , imgSrc2 , audioSrc, catText }) {
+export default function Cat({ imgSrc1 , imgSrc2 , audioSrc, title, artist }) {
 
   const [ catImage , UpdateCatImage ] = useState(imgSrc1);
 
-  const [ text , UpdateCatText ] = useState("");
+  const [ catText , UpdateCatText ] = useState("");
 
   let audio = new Audio(audioSrc);
     
@@ -15,7 +15,8 @@ export default function Cat({ imgSrc1 , imgSrc2 , audioSrc, catText }) {
     
     function Sing(){
         UpdateCatImage(imgSrc2);
-        UpdateCatText(catText);
+        let text = title + ' - ' + artist;
+        UpdateCatText(text);
         audio.play();
         if(audio != null) {
           audio.play();
@@ -32,7 +33,7 @@ export default function Cat({ imgSrc1 , imgSrc2 , audioSrc, catText }) {
     }
 
     return (
-    <div><button onClick={ Sing } className="Cat Grow"><img className = "CatPic" src={catImage}></img><p> { text } </p></button></div>
+    <div><button onClick={ Sing } className="Cat Grow"><img className = "CatPic" src={catImage}></img><p> { catText } </p></button></div>
     );
 
 
