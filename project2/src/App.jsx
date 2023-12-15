@@ -33,7 +33,7 @@ import Title from "./assets/title.png";
 const playlistID_1 = '37i9dQZF1DXasneILDRM7B'; // "Pure Pop Punk"
 const playlistID_2 = '37i9dQZF1EId3k9ylpDgha'; // "Midwest Emo Mix"
 const playlistID_3 = '37i9dQZF1EIgBrmye0h40Y'; // "Cozy Indie Mix"
-const playlistID_4 = '37i9dQZF1DWZCkamcYMQkz'; // "Feel Good Jazz"
+const playlistID_4 = '27Zm1P410dPfedsdoO9fqm'; // "Classical Bangers"
 
 const siteTitle = "Beats n' Cats";
 
